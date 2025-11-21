@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta smart</title>
+    <link rel="icon" type="image.jpg" href="imagenes/logo.PNG"/> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="imagenes/logo.PNG" alt="logo">
+        <nav>
+         <ul>
+           <a href="index.html">Inicio</a>
+           <a href="pagina 2.html">Nuestras tecnologias</a>
+           <a href="formulario.html">Nuestro contacto</a>
+           <a href="testimonios.html">Testimonios</a>
+         </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Inscripción</h2>
+        <form id="inscripcion" method="post" action="configuracion.php">
+        <ul>   
+        <li>
+        <label for="name">Nombre completo:</label>
+        <input type="text" id="nombre" name="Nombre" required />
+        </li> 
+
+        <li>
+        <label for="genero">Indique su Género: </label>
+        <select name="genero" id="genero" required>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="otro">Otro</option>
+        </select>
+        </li>
+
+        <li>
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" name="Edad" required>
+        </li>
+        
+        <li>
+        <label for="localidad">Localidad:</label>
+        <input type="text" id="barrio" name="ciudad" required>
+        </li>
+
+        <li>
+        <label for="sede">Selecciona una Sede: </label>
+        <select name="Selecciona" id="Selecciona" required>
+        <option value="barracas">Barracas 578</option>
+        <option value="tigre">Tigre 1244</option>
+        <option value="amaru">Tupac amaru 1781</option>
+        </select>
+        </li>
+        <button type="submit">Enviar</button>            
+        </form>
+
+        <h2>Consulta de Inscriptos</h2>
+        <form id="consulta" method="post" action="configuracion2.php">
+        <ul>
+            <li>
+            <label for="nombre_buscar">Nombre completo a buscar:</label>
+            <input type="text" id="nombre_buscar" name="nombre_buscar" required />
+            </li>
+        </ul>
+        <button type="submit">Buscar</button>
+        </form>
+    </main>
+    <script>
+        function subir(){
+            let formu = document.getElementById("inscripcion");
+            formu.addEventListener('submit', () =>{
+                alert("Se ha enviado correctamente sus datos, Espere la respuesta")
+            });
+        }
+        subir(); 
+    </script>
+    <footer>2025. Conecta Smart</footer> 
+  </body>  
+</html> 
+

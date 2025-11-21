@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonios - Conecta Smart</title>
+    <link rel="icon" type="image.jpg" href="imagenes/logo.PNG"/> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="imagenes/logo.PNG" alt="logo">
+        <nav>
+         <ul>
+           <a href="index.html">Inicio</a>
+           <a href="pagina 2.html">Nuestras tecnologias</a>
+           <a href="formulario.html">Nuestro contacto</a>
+           <a href="testimonios.html">Testimonios</a> </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="formulario-testimonio">
+            <h1>Déjanos tu Opinión</h1>
+            <p>Tu experiencia nos ayuda a mejorar la tecnología del hogar.</p>
+            
+            <form action="guardar_testimonio.php" method="POST">
+                <ul>
+                    <li>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </li>
+                    <li>
+                        <label for="comentario">Tu testimonio:</label>
+                        <textarea id="comentario" name="comentario" required ></textarea>
+                    </li>
+                </ul>
+                <button type="submit">enviar</button>
+            </form>
+        </section>
+
+        <section class="lista-testimonios">
+            <h1>Lo que dicen nuestros clientes</h1>
+            <div class="contenedor-testimonios">
+                
+                <?php
+                // Conexión rápida para LEER los datos (basado en tu config actual)
+                $conn = new mysqli("localhost", "root", "", "usuarios");
+                if ($conn->connect_error) { die("Error de conexión"); }
+                $conn->set_charset("utf8");
+
+                // Consulta: Traer los últimos 3, ordenados por ID descendente
+                $sql = "SELECT nombre, comentario, fecha FROM testimonios LIMIT 3";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo '<div class="testimonio-card">';
+                        echo '<h4>' . htmlspecialchars($row["nombre"]) . '</h4>';
+                        echo '<p>"' . htmlspecialchars($row["comentario"]) . '"</p>';
+                        echo '<small>Fecha: ' . $row["fecha"] . '</small>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "<p>Danos tu experiencia y conta tu testimonio</p>";
+                }
+                $conn->close();
+                ?>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>2025. Conecta Smart</footer>
+</body>
+</html>
