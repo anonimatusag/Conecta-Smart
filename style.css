@@ -479,7 +479,7 @@ h1::after {
     background: var(--neon-cyan);
     box-shadow: 0 0 15px var(--neon-cyan);
 }
-/* =========================================
+* =========================================
    11. RESPONSIVE DESIGN (CELULARES)
    ========================================= */
 @media (max-width: 768px) {
@@ -534,4 +534,5 @@ h1::after {
     .testimonio-card:hover, .producto figure:hover {
         transform: scale(1.02); /* Efecto más sutil */
     }
-}
+
+} 
